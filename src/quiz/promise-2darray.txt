@@ -1,1 +1,8 @@
 Explain the code execution based on the order of the messages logged in src/quiz/promise-2darray.txt.
+
+First, the sum2DArray function is called.  Then, it creates a promise to output from the function.  Within
+that promise, it attempts to find the sum of the input array.  For the first call, it manages to find the sum
+using an asynchronous call.  For the second, it cannot as it is passed a string and not an array.  Thus, it rejects
+the input and throws an error.  Since this is happening asynchronously, the promises have not been output to the console
+yet.  Now that the asynchronous functions have finished, it can resolve the promises.  It first outputs the errored promise 
+as that takes less time to complete and is resolved first.  Then it resolves the completed promise and finally outputs the sum.

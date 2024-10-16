@@ -18,11 +18,12 @@ function sumArray(arr: number[]): Promise<number> {
     })
 }
 
-const sum1 = sumArray(array2D_1[0]);
-const sum2 = sumArray(array2D_1[1]);
-const sum3 = sumArray(array2D_1[2]);
+let promiseArr: Promise<number>[] = [];
+for(let i = 0; i < array2D_1.length; i++) {
+    promiseArr.push(sumArray(array2D_1[i]))
+}
 
-Promise.all([sum1, sum2, sum3]).then((responses: number[]) => {
+Promise.all(promiseArr).then((responses: number[]) => {
     let sum = 0;
     responses.forEach((n) => sum += n )
     console.log(sum)

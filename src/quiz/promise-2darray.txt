@@ -1,1 +1,7 @@
 Explain the code execution based on the order of the messages logged in src/quiz/promise-2darray.txt.
+
+The first thing that happens on the Main thread is the initialization of the first promise.  This prints Sum Called...
+After this, it does not go into the set timeout as that does not execute until the then block.  Thus, it heads to the
+end and prints returning from sum.  The same thing happens with the second promise.  The second promise resolves faster
+because it errors out.  Thus, the error is printed.  Finally, the execution reaches the code within the "setTimeout" block and
+begins adding the matrix.  Finally, it can print the sum
